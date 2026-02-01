@@ -18,6 +18,14 @@
 <meta name="theme-color" content="#0A047A">
 
 <style>
+ /* Fix for Experiment and Build animations on mobile */
+  @media (max-width: 991px) {
+    .home-sticky_illo-wrapper.cc-mobile .home-sticky_illo {
+      opacity: 1 !important;
+      display: block !important;
+    }
+  }
+  
 body {
     min-height: 100vh;
     min-height: -webkit-fill-available;
