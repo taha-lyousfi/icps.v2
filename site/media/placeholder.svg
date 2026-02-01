@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Placeholder image">
+  <rect width="800" height="600" fill="#f2f2f2"/>
+  <rect x="24" y="24" width="752" height="552" fill="none" stroke="#c2c2c2" stroke-width="4"/>
+  <g fill="#8a8a8a" font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="400" y="290" font-size="28">ICPS 2026</text>
+    <text x="400" y="330" font-size="18">Placeholder</text>
+  </g>
+</svg>

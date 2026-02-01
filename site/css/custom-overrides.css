@@ -1,0 +1,77 @@
+/* Custom interaction fixes for local static build */
+
+/* Speaker card hover/focus reveal */
+.speaker-card .speaker-card_shapes,
+.speaker-card .speaker-card_shapes-img {
+  transition: transform 300ms ease, opacity 300ms ease;
+  will-change: transform, opacity;
+}
+
+.speaker-card .speaker-card_shapes {
+  opacity: 0;
+  transform: translate3d(0, 10%, 0);
+}
+
+.speaker-card:hover .speaker-card_shapes,
+.speaker-card.is-hover .speaker-card_shapes,
+.speaker-card:focus-within .speaker-card_shapes {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.speaker-card .speaker-card_shapes.first {
+  transition-delay: 0ms;
+}
+
+.speaker-card .speaker-card_shapes.second {
+  transition-delay: 60ms;
+}
+
+.speaker-card .speaker-card_shapes.third {
+  transition-delay: 120ms;
+}
+
+.speaker-card .speaker-card_shapes-img.w-condition-invisible {
+  display: none !important;
+}
+
+.speaker-card:hover .speaker-card_shapes-img.w-condition-invisible,
+.speaker-card.is-hover .speaker-card_shapes-img.w-condition-invisible,
+.speaker-card:focus-within .speaker-card_shapes-img.w-condition-invisible {
+  display: block !important;
+}
+
+.speaker-card .speaker-card_photo-img {
+  transition: transform 300ms ease;
+}
+
+.speaker-card:hover .speaker-card_photo-img,
+.speaker-card.is-hover .speaker-card_photo-img,
+.speaker-card:focus-within .speaker-card_photo-img {
+  transform: translate3d(0, -2%, 0) scale(1.02);
+}
+
+/* FAQ accordion */
+.accordion-item .accordion-content {
+  display: block !important;
+  overflow: hidden;
+  height: 0;
+  transition: height 300ms ease;
+}
+
+.accordion-item.is-open .accordion-content {
+  height: var(--accordion-content-height, auto);
+}
+
+.accordion-item .accordion-icon_left,
+.accordion-item .accordion-icon_right {
+  transition: transform 200ms ease;
+}
+
+.accordion-item.is-open .accordion-icon_left {
+  transform: rotate(-45deg) !important;
+}
+
+.accordion-item.is-open .accordion-icon_right {
+  transform: rotate(45deg) !important;
+}
