@@ -76,49 +76,51 @@
   transform: rotate(45deg) !important;
 }
 
-/* Homepage - standalone city showcase (sits below the hero, clear of the decorative illustration) */
-.city-showcase {
+/* Homepage - full-width city banner, sits above the hero (ICPS 2024 style) */
+.city-banner {
   position: relative;
-  z-index: 4;
-  padding: 8px 0 56px;
-}
-
-.city-showcase_img {
-  display: inline-block;
   width: 100%;
-  max-width: 360px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.3);
+  height: 420px;
+  overflow: hidden;
 }
 
-.city-showcase_caption {
-  margin: 12px 0 0;
+.city-banner_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.city-banner_overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 4, 122, 0.1) 0%, rgba(10, 4, 122, 0.85) 100%);
+}
+
+.city-banner_caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 22px;
+  margin: 0;
+  text-align: center;
   font-family: 'Roboto Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.6px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 @media screen and (max-width: 767px) {
-  .city-showcase_img {
-    max-width: 280px;
-    height: 180px;
+  .city-banner {
+    height: 240px;
   }
-}
 
-/* The Webflow intro section normally sits directly under the hero's tall
-   decorative illustration, so it carries a large negative top margin
-   (-24vw) to pull it up into that illustration. Now that city-showcase
-   sits between the hero and the intro, that same negative margin pulls
-   the intro heading up underneath/behind the photo instead, hiding it.
-   Neutralize it only in this specific adjacency. */
-.city-showcase + .cc-home-intro {
-  margin-top: 0;
-  padding-top: 16px;
+  .city-banner_caption {
+    font-size: 11px;
+    bottom: 14px;
+  }
 }
 
 /* Venue page */
