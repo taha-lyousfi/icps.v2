@@ -110,6 +110,17 @@
   }
 }
 
+/* The Webflow intro section normally sits directly under the hero's tall
+   decorative illustration, so it carries a large negative top margin
+   (-24vw) to pull it up into that illustration. Now that city-showcase
+   sits between the hero and the intro, that same negative margin pulls
+   the intro heading up underneath/behind the photo instead, hiding it.
+   Neutralize it only in this specific adjacency. */
+.city-showcase + .cc-home-intro {
+  margin-top: 0;
+  padding-top: 16px;
+}
+
 /* Venue page */
 .venue-intro p {
   margin-bottom: 16px;
