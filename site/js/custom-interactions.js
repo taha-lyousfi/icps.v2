@@ -79,12 +79,16 @@
 
     $slider.slick({
       arrows: false,
-      infinite: false,
-      autoplay: false,
-      autoplaySpeed: 8000,
-      speed: 300,
+      infinite: true,
+      autoplay: true,
+      autoplaySpeed: 0,
+      speed: 6000,
+      cssEase: 'linear',
+      pauseOnHover: true,
+      pauseOnFocus: true,
       slidesToShow: 3,
       slidesToScroll: 1,
+      swipeToSlide: true,
       responsive: [
         {
           breakpoint: 1024,
