@@ -97,6 +97,168 @@
         background-color: #f9faff;
         border-color: #dbe4ff;
     }
+
+    /* --- AGENDA TOOLBAR (download) --- */
+    .agenda-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 0;
+    }
+    .agenda-toolbar_note {
+      color: #5a5a7a;
+      font-size: 14px;
+      margin: 0;
+    }
+    .agenda-download_btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #0A047A;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
+    }
+    .agenda-download_btn:hover {
+      background-color: #3874FF;
+      transform: translateY(-2px);
+    }
+    .agenda-download_btn svg { flex: none; }
+
+    /* --- AGENDA DAY TABS --- */
+    .agenda-tabs_outer {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #ffffff;
+      border-bottom: 1px solid #e6e8f5;
+      padding: 12px 0;
+    }
+    .agenda-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+    .agenda-tabs::-webkit-scrollbar { display: none; }
+    .agenda-tab {
+      flex: none;
+      cursor: pointer;
+      background: #f4f5fb;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0A047A;
+      text-align: center;
+      line-height: 1.2;
+      transition: all 0.2s ease;
+    }
+    .agenda-tab_sub {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      color: #7a7aa0;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 2px;
+    }
+    .agenda-tab.is-active {
+      background-color: #3874FF;
+      color: #fff;
+      border-color: #3874FF;
+      box-shadow: 0 6px 14px rgba(56, 116, 255, 0.25);
+    }
+    .agenda-tab.is-active .agenda-tab_sub { color: #e3ebff; }
+    .agenda-tab:hover:not(.is-active) { background-color: #e9ecfb; }
+
+    /* --- AGENDA PANELS (one visible day at a time, no infinite scroll) --- */
+    .agenda-panel { display: none; }
+    .agenda-panel.is-active {
+      display: block;
+      animation: agendaFadeIn 0.25s ease;
+    }
+    @keyframes agendaFadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- AGENDA OVERVIEW IMAGE + LIGHTBOX --- */
+    .agenda-overview {
+      padding: 8px 0 28px;
+    }
+    .agenda-overview_frame {
+      position: relative;
+      border: 1px solid #e6e8f5;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: zoom-in;
+      box-shadow: 0 4px 14px rgba(10, 4, 122, 0.08);
+      background: #fff;
+    }
+    .agenda-overview_frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+    .agenda-overview_frame:hover img { transform: scale(1.01); }
+    .agenda-overview_hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(10, 4, 122, 0.85);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+    .agenda-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 4, 122, 0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      z-index: 1000;
+    }
+    .agenda-lightbox.is-open { display: flex; }
+    .agenda-lightbox_img {
+      max-width: 95vw;
+      max-height: 92vh;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      cursor: zoom-out;
+    }
+    .agenda-lightbox_close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      border: none;
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .agenda-lightbox_close:hover { background: rgba(255, 255, 255, 0.3); }
   </style>
 </head>
 
@@ -128,8 +290,41 @@
             <h1 class="h0">Agenda</h1>
             <p class="paragraph-l">Explore the week of sessions, labs, and cultural programming at ICPS 2026.</p>
           </div>
+          <div class="agenda-toolbar">
+            <p class="agenda-toolbar_note">Select a day below to view its full schedule, or download the complete programme.</p>
+            <a href="media/ICPS_2026_Program.pdf" download class="agenda-download_btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Download Full Programme (PDF)
+            </a>
+          </div>
         </div>
       </header>
+
+      <div class="agenda-tabs_outer">
+        <div class="container">
+          <div class="agenda-tabs" role="tablist" aria-label="ICPS 2026 conference days">
+            <button type="button" role="tab" id="tab-day-1" aria-controls="panel-day-1" aria-selected="true" class="agenda-tab is-active" data-day-target="panel-day-1">Sunday<span class="agenda-tab_sub">Day 1</span></button>
+            <button type="button" role="tab" id="tab-day-2" aria-controls="panel-day-2" aria-selected="false" tabindex="-1" class="agenda-tab" data-day-target="panel-day-2">Monday<span class="agenda-tab_sub">Day 2</span></button>
+            <button type="button" role="tab" id="tab-day-3" aria-controls="panel-day-3" aria-selected="false" tabindex="-1" class="agenda-tab" data-day-target="panel-day-3">Tuesday<span class="agenda-tab_sub">Day 3</span></button>
+            <button type="button" role="tab" id="tab-day-4" aria-controls="panel-day-4" aria-selected="false" tabindex="-1" class="agenda-tab" data-day-target="panel-day-4">Wednesday<span class="agenda-tab_sub">Day 4</span></button>
+            <button type="button" role="tab" id="tab-day-5" aria-controls="panel-day-5" aria-selected="false" tabindex="-1" class="agenda-tab" data-day-target="panel-day-5">Thursday<span class="agenda-tab_sub">Day 5</span></button>
+            <button type="button" role="tab" id="tab-day-6" aria-controls="panel-day-6" aria-selected="false" tabindex="-1" class="agenda-tab" data-day-target="panel-day-6">Friday<span class="agenda-tab_sub">Day 6</span></button>
+            <button type="button" role="tab" id="tab-day-7" aria-controls="panel-day-7" aria-selected="false" tabindex="-1" class="agenda-tab" data-day-target="panel-day-7">Saturday<span class="agenda-tab_sub">Day 7</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container agenda-overview">
+        <div class="agenda-overview_frame" id="agenda-overview-trigger" role="button" tabindex="0" aria-label="Enlarge the full programme overview image">
+          <img src="media/ICPS_2026_Program.jpg" alt="ICPS 2026 full programme overview, day by day" loading="lazy">
+          <span class="agenda-overview_hint">Click to enlarge</span>
+        </div>
+      </div>
+
+      <div class="agenda-lightbox" id="agenda-lightbox">
+        <button type="button" class="agenda-lightbox_close" id="agenda-lightbox-close" aria-label="Close enlarged image">&times;</button>
+        <img src="media/ICPS_2026_Program.jpg" alt="ICPS 2026 full programme overview, enlarged" class="agenda-lightbox_img" id="agenda-lightbox-img">
+      </div>
 
       <section class="u-position-relative">
         <header class="agenda-nav">
@@ -150,6 +345,7 @@
           <div class="section u-border-top-purple">
             <div class="container">
 
+              <div class="agenda-panel is-active" id="panel-day-1" role="tabpanel" aria-labelledby="tab-day-1" tabindex="0">
               <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Sunday</h2>
                 <div class="agenda-day_date-time-wrapper">
@@ -199,10 +395,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div class="u-bg-lines cc-section-divider"></div>
-              
-              <div class="agenda-day_wrapper u-mt-3">
+              <div class="agenda-panel" id="panel-day-2" role="tabpanel" aria-labelledby="tab-day-2" tabindex="0">
+              <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Monday</h2>
                 <div class="agenda-day_date-time-wrapper">
                   <div class="agenda-day_date">Day 2</div>
@@ -301,10 +497,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div class="u-bg-lines cc-section-divider"></div>
-              
-              <div class="agenda-day_wrapper u-mt-3">
+              <div class="agenda-panel" id="panel-day-3" role="tabpanel" aria-labelledby="tab-day-3" tabindex="0">
+              <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Tuesday</h2>
                 <div class="agenda-day_date-time-wrapper">
                   <div class="agenda-day_date">Day 3</div>
@@ -333,10 +529,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div class="u-bg-lines cc-section-divider"></div>
-              
-              <div class="agenda-day_wrapper u-mt-3">
+              <div class="agenda-panel" id="panel-day-4" role="tabpanel" aria-labelledby="tab-day-4" tabindex="0">
+              <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Wednesday</h2>
                 <div class="agenda-day_date-time-wrapper">
                   <div class="agenda-day_date">Day 4</div>
@@ -435,10 +631,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div class="u-bg-lines cc-section-divider"></div>
-              
-              <div class="agenda-day_wrapper u-mt-3">
+              <div class="agenda-panel" id="panel-day-5" role="tabpanel" aria-labelledby="tab-day-5" tabindex="0">
+              <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Thursday</h2>
                 <div class="agenda-day_date-time-wrapper">
                   <div class="agenda-day_date">Day 5</div>
@@ -517,16 +713,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              
-              
-              
-
-              
-
-              <div class="u-bg-lines cc-section-divider"></div>
-              
-              <div class="agenda-day_wrapper u-mt-3">
+              <div class="agenda-panel" id="panel-day-6" role="tabpanel" aria-labelledby="tab-day-6" tabindex="0">
+              <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Friday</h2>
                 <div class="agenda-day_date-time-wrapper">
                   <div class="agenda-day_date">Day 6</div>
@@ -655,10 +845,10 @@
                   </div>
                 </div>
               </div>
+              </div>
 
-              <div class="u-bg-lines cc-section-divider"></div>
-              
-              <div class="agenda-day_wrapper u-mt-3">
+              <div class="agenda-panel" id="panel-day-7" role="tabpanel" aria-labelledby="tab-day-7" tabindex="0">
+              <div class="agenda-day_wrapper">
                 <h2 class="h1 u-mb-0 u-d-inline-block">Saturday</h2>
                 <div class="agenda-day_date-time-wrapper">
                   <div class="agenda-day_date">Day 7</div>
@@ -687,8 +877,8 @@
                   </div>
                 </div>
               </div>
-              
               <div class="u-mt-3"><p>*Agenda is subject to change</p></div>
+              </div>
 
             </div>
           </div>
@@ -749,5 +939,101 @@
   <script type="text/javascript" src="js/6e0770cbef-webflow.649f919a.505b1b38fd485305.js"></script>
   <script type="text/javascript" src="js/4f824b901a-brand-body-scripts.js"></script>
   <script type="text/javascript" src="js/a7035709e8-marketing-body-v2.js"></script>
+
+  <script type="text/javascript">
+    (function () {
+      'use strict';
+
+      function initAgendaTabs() {
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.agenda-tab'));
+        if (!tabs.length) return;
+
+        function activate(tab, focus) {
+          tabs.forEach(function (t) {
+            var panel = document.getElementById(t.getAttribute('aria-controls'));
+            var isActive = t === tab;
+            t.classList.toggle('is-active', isActive);
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            t.tabIndex = isActive ? 0 : -1;
+            if (panel) panel.classList.toggle('is-active', isActive);
+          });
+          if (focus) tab.focus();
+        }
+
+        tabs.forEach(function (tab, index) {
+          tab.addEventListener('click', function () {
+            activate(tab, false);
+          });
+
+          tab.addEventListener('keydown', function (event) {
+            var nextIndex = null;
+            if (event.key === 'ArrowRight' || event.key === 'ArrowDown') nextIndex = (index + 1) % tabs.length;
+            if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') nextIndex = (index - 1 + tabs.length) % tabs.length;
+            if (event.key === 'Home') nextIndex = 0;
+            if (event.key === 'End') nextIndex = tabs.length - 1;
+            if (nextIndex !== null) {
+              event.preventDefault();
+              activate(tabs[nextIndex], true);
+            }
+          });
+        });
+
+        var hash = (window.location.hash || '').replace('#', '');
+        if (hash) {
+          var target = tabs.filter(function (t) { return t.getAttribute('data-day-target') === hash; })[0];
+          if (target) activate(target, false);
+        }
+      }
+
+      function initAgendaLightbox() {
+        var trigger = document.getElementById('agenda-overview-trigger');
+        var lightbox = document.getElementById('agenda-lightbox');
+        var closeBtn = document.getElementById('agenda-lightbox-close');
+        if (!trigger || !lightbox || !closeBtn) return;
+
+        function openLightbox() {
+          lightbox.classList.add('is-open');
+          closeBtn.focus();
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('is-open');
+          document.body.style.overflow = '';
+          trigger.focus();
+        }
+
+        trigger.addEventListener('click', openLightbox);
+        trigger.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openLightbox();
+          }
+        });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (event) {
+          if (event.target === lightbox || event.target.id === 'agenda-lightbox-img') {
+            closeLightbox();
+          }
+        });
+        document.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+            closeLightbox();
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function () {
+          initAgendaTabs();
+          initAgendaLightbox();
+        });
+      } else {
+        initAgendaTabs();
+        initAgendaLightbox();
+      }
+    })();
+  </script>
 
 </body></html>
