@@ -4,3 +4,5 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
 .button.cc-sponsor,.button.cc-sponsor.cc-platinum{padding:24px!important;min-height:230px;justify-content:center;align-items:center;background-color:var(--white)}
 .sponsor_flex-col,.sponsor_flex-col.cc-platinum{display:flex}
 .sponsor_flex-col .button-wrapper.cc-sponsor{width:100%}
+/* IAPS logo slightly smaller to visually match the others */
+img.sponsor_logo-img[alt="IAPS"]{height:130px!important;max-width:280px!important}
