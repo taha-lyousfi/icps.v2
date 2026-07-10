@@ -6,3 +6,5 @@ html{-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:sans-se
 .sponsor_flex-col .button-wrapper.cc-sponsor{width:100%}
 /* IAPS logo slightly smaller to visually match the others */
 img.sponsor_logo-img[alt="IAPS"]{height:130px!important;max-width:280px!important}
+
+.sponsor_flex-col.cc-bronze{flex:0 0 auto;max-width:33.3333%}.button.cc-sponsor.cc-bronze{background-color:var(--white);min-height:120px;padding:20px!important;justify-content:center;align-items:center}.sponsor_logo-img.cc-bronze{width:100%!important;max-width:220px!important;height:70px!important;object-fit:contain!important}@media screen and (max-width:767px){.sponsor_flex-col.cc-bronze{flex-basis:100%;max-width:100%}}
